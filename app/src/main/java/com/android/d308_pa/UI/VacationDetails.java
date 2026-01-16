@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -29,11 +30,23 @@ import java.util.List;
 public class VacationDetails extends AppCompatActivity {
     String name;
     double price;
+
+    String hotel;
     int vacationID;
     int numExcursions;
+
+    String vacationStart;
+
+    String vacationEnd;
     Vacations currentVacation;
     EditText editName;
     EditText editPrice;
+
+    EditText editHotel;
+
+    TextView editVacaStart;
+
+    TextView editVacaEnd;
     Repository repository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +57,33 @@ public class VacationDetails extends AppCompatActivity {
 
         editName=findViewById(R.id.titletext);
         editPrice=findViewById(R.id.pricetext);
+        editHotel = findViewById(R.id.hoteltext);
+        editVacaStart = findViewById(R.id.startvacationdate);
+        editVacaEnd = findViewById(R.id.endvacationdate);
         vacationID= getIntent().getIntExtra("id", -1);
         name = getIntent().getStringExtra("name");
+        hotel = getIntent().getStringExtra("hotel");
         price = getIntent().getDoubleExtra("price", 0.0);
+        vacationStart = getIntent().getStringExtra("vacationStart");
+        vacationEnd = getIntent().getStringExtra("vacationEnd");
         editName.setText(name);
+        editHotel.setText(hotel);
         editPrice.setText(Double.toString(price));
+        editVacaStart.setText(vacationStart);
+        editVacaEnd.setText(vacationEnd);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(VacationDetails.this, ExcursionDetails.class);
+                intent.putExtra("vacationID", vacationID);
+                intent.putExtra("vacationStart", vacationStart);
+                intent.putExtra("vacationEnd", vacationEnd);
                 startActivity(intent);
             }
         });
         RecyclerView recyclerView = findViewById(R.id.excursionrecyclerview);
         repository = new Repository(getApplication());
-        final ExcursionAdapter excursionAdapter = new ExcursionAdapter(this);
+        final ExcursionAdapter excursionAdapter = new ExcursionAdapter(this, vacationStart, vacationEnd);
         recyclerView.setAdapter(excursionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Excursions> filteredExcursions = new ArrayList<>();
@@ -93,12 +118,12 @@ public class VacationDetails extends AppCompatActivity {
                 else {
                     vacationID = repository.getAllVacations().get(repository.getAllVacations().size() -1).getVacationID() +1;
                 }
-                vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()));
+                vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), editHotel.getText().toString(), editVacaStart.getText().toString(), editVacaEnd.getText().toString());
                 repository.insert(vacation);
                 this.finish();
             }
             else {
-                vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()));
+                vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), editHotel.getText().toString(), editVacaStart.getText().toString(), editVacaEnd.getText().toString());
                 repository.update(vacation);
                 this.finish();
             }

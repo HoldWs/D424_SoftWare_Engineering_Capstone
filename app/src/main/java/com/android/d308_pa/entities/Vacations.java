@@ -10,10 +10,22 @@ public class Vacations {
     private String vacationName;
     private double price;
 
-    public Vacations(int vacationID, String vacationName, double price) {
+    private String hotel;
+
+    private String vacationStart;
+
+
+    private String vacationEnd;
+
+
+
+    public Vacations(int vacationID, String vacationName, double price, String hotel, String vacationStart, String vacationEnd) {
         this.vacationID = vacationID;
         this.vacationName = vacationName;
         this.price = price;
+        this.hotel = hotel;
+        this.vacationStart = vacationStart;
+        this.vacationEnd = vacationEnd;
     }
     public String getVacationName() {
         return vacationName;
@@ -37,5 +49,29 @@ public class Vacations {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(String hotel) {
+        this.hotel = hotel;
+    }
+
+    public String getVacationEnd() {
+        return vacationEnd;
+    }
+
+    public void setVacationEnd(String vacationEnd) {
+        this.vacationEnd = vacationEnd;
+    }
+
+    public String getVacationStart() {
+        return vacationStart;
+    }
+
+    public void setVacationStart(String vacationStart) {
+        this.vacationStart = vacationStart;
     }
 }

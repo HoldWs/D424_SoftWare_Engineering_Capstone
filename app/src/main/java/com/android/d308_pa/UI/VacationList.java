@@ -22,7 +22,7 @@ import com.android.d308_pa.R;
 import com.android.d308_pa.database.Repository;
 import com.android.d308_pa.entities.Excursions;
 import com.android.d308_pa.entities.Vacations;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 import java.util.List;
 
@@ -85,7 +85,7 @@ private Repository repository;
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId()==R.id.sample){
             repository= new Repository(getApplication());
-            Vacations vacation= new Vacations(0, "Houston, Texas", 420.69);
+            Vacations vacation= new Vacations(0, "Houston, Texas", 420.69, "Hilton", "1/1/26", "1/8/26");
             repository.insert(vacation);
             Excursions excursion=new Excursions(0, "Texans Game", 200.00, 0);
             repository.insert(excursion);
