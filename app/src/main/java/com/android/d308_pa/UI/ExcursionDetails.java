@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +22,9 @@ import com.android.d308_pa.database.Repository;
 import com.android.d308_pa.entities.Excursions;
 import com.android.d308_pa.entities.Vacations;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ExcursionDetails extends AppCompatActivity {
 
@@ -33,8 +36,10 @@ public class ExcursionDetails extends AppCompatActivity {
     int vacationID;
 
     EditText editName;
+    String excursionDate;
 
     EditText editPrice;
+    EditText editDate;
     Excursions currentExcursion;
 
     Repository repository;
@@ -60,6 +65,11 @@ public class ExcursionDetails extends AppCompatActivity {
         editPrice.setText(Double.toString(price));
         excursionID = getIntent().getIntExtra("id", -1);
         vacationID = getIntent().getIntExtra("vacationID", -1);
+        excursionDate = getIntent().getStringExtra("excursionDate");
+        editDate=findViewById(R.id.excursiondate);
+        editDate.setText(excursionDate);
+        String dateFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
         ArrayList<Vacations> vacationArrayList = new ArrayList<>();
         vacationArrayList.addAll(repository.getAllVacations());
@@ -102,11 +112,11 @@ public class ExcursionDetails extends AppCompatActivity {
                     excursionID = 1;
                 else
                     excursionID = repository.getAllExcursions().get(repository.getAllExcursions().size() - 1).getExcursionID() + 1;
-                excursion = new Excursions(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacationID);
+                excursion = new Excursions(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacationID, editDate.getText().toString());
                 repository.insert(excursion);
                 this.finish();
             } else {
-                excursion = new Excursions(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacationID);
+                excursion = new Excursions(excursionID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), vacationID, editDate.getText().toString());
                 repository.update(excursion);
                 this.finish();
             }

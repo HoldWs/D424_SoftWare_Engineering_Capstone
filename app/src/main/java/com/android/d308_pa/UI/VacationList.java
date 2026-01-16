@@ -87,7 +87,7 @@ private Repository repository;
             repository= new Repository(getApplication());
             Vacations vacation= new Vacations(0, "Houston, Texas", 420.69, "Hilton", "1/1/26", "1/8/26");
             repository.insert(vacation);
-            Excursions excursion=new Excursions(0, "Texans Game", 200.00, 0);
+            Excursions excursion=new Excursions(0, "Texans Game", 200.00, 0, "01/01/26");
             repository.insert(excursion);
             Toast.makeText(VacationList.this,"Sample entry added to DB!", Toast.LENGTH_LONG).show();
             return true;
