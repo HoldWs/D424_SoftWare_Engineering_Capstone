@@ -51,11 +51,9 @@ public class ExcursionAdapter extends RecyclerView.Adapter<ExcursionAdapter.Excu
             });
         }
     }
-public ExcursionAdapter(Context context, String vacationStart, String vacationEnd){
+public ExcursionAdapter(Context context){
     mInflater=LayoutInflater.from(context);
     this.context=context;
-    this.vacationStart = vacationStart;
-    this.vacationEnd = vacationEnd;
 }
 @Override
     public ExcursionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

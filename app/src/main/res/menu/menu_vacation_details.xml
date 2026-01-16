@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Save Vacation"
     android:id="@+id/savevacation"/>
     <item android:title="Delete Vacation"
         android:id="@+id/deletevacation"/>
+    <item android:title="Notify Me About this Vacation"
+        android:id="@+id/notifyvacation"/>
+    <item android:title="Share this vacation with a friend!"
+        android:id="@+id/vacationshare" />
+
 </menu>
