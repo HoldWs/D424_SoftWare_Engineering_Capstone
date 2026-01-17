@@ -83,14 +83,8 @@ private Repository repository;
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId()==R.id.sample){
-            repository= new Repository(getApplication());
-            Vacations vacation= new Vacations(0, "Houston, Texas", 420.69, "Hilton", "1/1/26", "1/8/26");
-            repository.insert(vacation);
-            Excursions excursion=new Excursions(0, "Texans Game", 200.00, 0, "01/01/26");
-            repository.insert(excursion);
-            Toast.makeText(VacationList.this,"Sample entry added to DB!", Toast.LENGTH_LONG).show();
-            return true;
+        if(item.getItemId()==R.id.lol){
+            Toast.makeText(this, "Isn't planning your next vacation fun???", Toast.LENGTH_SHORT).show();
         }
 
         if(item.getItemId()==android.R.id.home){
