@@ -1,0 +1,26 @@
+This is a vacation planning app used for the Performance Assessment for Western Governor University's D308 Mobile Application Development course.
+Developing this application required learning about a handful of different frameworks and languages. Here are some of the tools used in the development of this app:
+
+Java: For robust back-end functionality.
+SQLite: Used to create a local database.
+Room Interface: Used in database access and data management.
+Gradle: For dependable build management.
+
+This application also demanded learning the Android Studio IDE as well as learning about the intricacies of uploading applications to the Google Play store.
+
+How to use this application:
+
+After starting the app, the user can click the first button on the home page to go to the list of vacations. User can click "Add a vacation" to be taken to the vacation details scree.
+On the vacation details screen, there are 5 inputs for title, price, hotel, start date and end date that the user can input data into. The menu options give options for saving and deleting vacations, as well as notifying the user when a vacation is starting/ending and sharing vacation details with another user.
+Saving an already existing vacation will simply update it with any changes instead.
+Clicking on the "Add an excursion" button takes the user to the excursion details screen. There are 3 data fields with name, price and date that users can input data into.
+The menu options allow a user to save and delete an excursion as well as notify the user when an excursion is starting.
+Saving an already existing excursion will simply update it with any changes instead.
+After saving an excursion, the user will be taken back to the vacation details screen where any new excursions will show up below the vacation details. Clicking the excursion will take you to it's associated details page.
+
+There is validation in place that will prevent users from saving or updating a vacation with a start date that begins after the end date, and vice versa.
+There is also validation that will prevent users from saving or updating an excursion with a start date that does not fall within its associated vacation's start and end date.
+
+The APK for this application is deployed to Android version 8, with a minimum API of 28.
+
+Here is a link to the repository: https://gitlab.com/wgu-gitlab-environment/student-repos/cmcd464/d308-mobile-application-development-android
