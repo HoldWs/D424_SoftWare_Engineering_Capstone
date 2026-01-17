@@ -89,12 +89,20 @@ public class VacationDetails extends AppCompatActivity {
         editVacaEnd.setText(vacationEnd);
         String dateFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(VacationDetails.this, ExcursionDetails.class);
                 intent.putExtra("vacationID", vacationID);
                 startActivity(intent);
+            }
+        });
+        Button button1 = findViewById(R.id.button4);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
         RecyclerView recyclerView = findViewById(R.id.excursionrecyclerview);
@@ -297,6 +305,7 @@ public class VacationDetails extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            Toast.makeText(this, "Alarm Set!", Toast.LENGTH_SHORT).show();
             return true;
         }
         if(item.getItemId() == R.id.vacationshare) {
