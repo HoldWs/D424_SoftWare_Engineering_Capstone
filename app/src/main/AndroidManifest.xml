@@ -14,13 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.D308_PA">
         <activity
+            android:name=".UI.ReportFunction"
+            android:exported="false" />
+        <activity
             android:name=".UI.SearchFunction"
             android:exported="false" />
 
         <receiver
             android:name=".UI.VacationReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".UI.ExcursionDetails"

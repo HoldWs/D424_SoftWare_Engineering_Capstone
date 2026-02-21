@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.ReportFunction">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:gravity="center">
+    <TextView
+        android:id="@+id/report_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Vacation Data Report"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/report_name_head"
+        app:layout_constraintEnd_toStartOf="@+id/report_timestamp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/report_timestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Book a vacation to set a timestamp"
+        android:padding="10dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/report_start_date_head"
+        app:layout_constraintStart_toEndOf="@id/report_title"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/report_name_head"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Vacation Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="start"
+        app:layout_constraintTop_toBottomOf="@id/report_title"
+        app:layout_constraintBottom_toTopOf="@id/report_recycler_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/report_start_date_head"/>
+    <TextView
+        android:id="@+id/report_start_date_head"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Vacation Start"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="start"
+        app:layout_constraintTop_toBottomOf="@id/report_title"
+        app:layout_constraintBottom_toTopOf="@id/report_recycler_view"
+        app:layout_constraintStart_toEndOf="@id/report_name_head"
+        app:layout_constraintEnd_toStartOf="@id/report_end_date_head"/>
+    <TextView
+        android:id="@+id/report_end_date_head"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Vacation End"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:gravity="start"
+        app:layout_constraintTop_toBottomOf="@id/report_title"
+        app:layout_constraintBottom_toTopOf="@id/report_recycler_view"
+        app:layout_constraintStart_toEndOf="@id/report_start_date_head"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/report_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/report_name_head"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</HorizontalScrollView>

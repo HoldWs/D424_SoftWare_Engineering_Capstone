@@ -23,6 +23,7 @@ import com.android.d308_pa.R;
 import com.android.d308_pa.database.Repository;
 import com.android.d308_pa.entities.Excursions;
 import com.android.d308_pa.entities.Vacations;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ private Repository repository;
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_vacation_list);
 
-        Button button=findViewById(R.id.addVacationButton);
+        FloatingActionButton button=findViewById(R.id.addVacationButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,14 +45,7 @@ private Repository repository;
                 startActivity(intent);
             }
         });
-        Button button2=findViewById(R.id.goToSearch);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(VacationList.this, SearchFunction.class);
-                startActivity(intent);
-            }
-        });
+
 
         RecyclerView recyclerView=findViewById(R.id.recyclerview);
         repository = new Repository(getApplication());
@@ -88,17 +82,18 @@ private Repository repository;
 
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId()==R.id.search){
-            Toast.makeText(this, "this will eventually lead to a search page", Toast.LENGTH_SHORT).show();
-            return true;
+            Intent intent = new Intent(VacationList.this, SearchFunction.class);
+            startActivity(intent);
         }
         if(item.getItemId()==R.id.report){
-            Toast.makeText(this, "this will eventually generate a report", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(VacationList.this, ReportFunction.class);
+            startActivity(intent);
         }
         if(item.getItemId()==android.R.id.home){
             this.finish();
             return true;
         }
-        return true;
+        return false;
     }
 
 }
