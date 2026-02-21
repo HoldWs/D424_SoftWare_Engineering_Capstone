@@ -40,6 +40,18 @@ public class Repository {
 
         return mAllVacations;
     }
+
+    public List<Vacations> getQueriedVacations(String query) {
+        databaseExecutor.execute(()->{
+            mAllVacations = mVacationDAO.getQueriedVacations("%" + query + "%");
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return mAllVacations;
+    }
     public void insert(Vacations vacation){
         databaseExecutor.execute(()-> {
             mVacationDAO.insert(vacation);

@@ -24,6 +24,7 @@ public class VacationAdapter extends RecyclerView.Adapter<VacationAdapter.Vacati
         mInflater = LayoutInflater.from(context);
         this.context=context;
     }
+
     public class VacationViewHolder extends RecyclerView.ViewHolder{
         private final TextView vacationItemView;
         public VacationViewHolder(@NonNull View itemView) {
