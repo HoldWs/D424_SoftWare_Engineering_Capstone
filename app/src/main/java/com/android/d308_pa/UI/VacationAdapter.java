@@ -42,6 +42,7 @@ public class VacationAdapter extends RecyclerView.Adapter<VacationAdapter.Vacati
                     intent.putExtra("hotel", current.getHotel());
                     intent.putExtra("vacationStart", current.getVacationStart());
                     intent.putExtra("vacationEnd", current.getVacationEnd());
+                    intent.putExtra("chosenFlight", current.getChosenFlight());
                     context.startActivity(intent);
                 }
 

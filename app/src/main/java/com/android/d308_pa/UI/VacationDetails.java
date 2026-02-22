@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +40,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class VacationDetails extends AppCompatActivity {
+
     String name;
     double price;
     static int notificationID;
@@ -47,6 +51,8 @@ public class VacationDetails extends AppCompatActivity {
     String vacationStart;
 
     String vacationEnd;
+
+    String flight;
     Vacations currentVacation;
     EditText editName;
     EditText editPrice;
@@ -56,6 +62,8 @@ public class VacationDetails extends AppCompatActivity {
     TextView editVacaStart;
 
     TextView editVacaEnd;
+
+    EditText chosenFlight;
 
     DatePickerDialog.OnDateSetListener startVacationDate;
     DatePickerDialog.OnDateSetListener endVacationDate;
@@ -70,23 +78,26 @@ public class VacationDetails extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_vacation_details);
         Button button=findViewById(R.id.button2);
-
+        repository = new Repository(getApplication());
         editName=findViewById(R.id.titletext);
         editPrice=findViewById(R.id.pricetext);
         editHotel = findViewById(R.id.hoteltext);
         editVacaStart = findViewById(R.id.startvacationdate);
         editVacaEnd = findViewById(R.id.endvacationdate);
+        chosenFlight = findViewById(R.id.chosen_flight);
         vacationID= getIntent().getIntExtra("id", -1);
         name = getIntent().getStringExtra("name");
         hotel = getIntent().getStringExtra("hotel");
         price = getIntent().getDoubleExtra("price", 0.0);
         vacationStart = getIntent().getStringExtra("vacationStart");
         vacationEnd = getIntent().getStringExtra("vacationEnd");
+        flight = getIntent().getStringExtra("chosenFlight");
         editName.setText(name);
         editHotel.setText(hotel);
         editPrice.setText(Double.toString(price));
         editVacaStart.setText(vacationStart);
         editVacaEnd.setText(vacationEnd);
+        chosenFlight.setText(flight);
         String dateFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.US);
 
@@ -105,8 +116,21 @@ public class VacationDetails extends AppCompatActivity {
                 finish();
             }
         });
+        Button united = findViewById(R.id.united_button);
+        united.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                      chosenFlight.setText("United");
+            }
+        });
+        Button southwest = findViewById(R.id.southwest_button);
+        southwest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chosenFlight.setText("Southwest");
+            }
+        });
         RecyclerView recyclerView = findViewById(R.id.excursionrecyclerview);
-        repository = new Repository(getApplication());
         final ExcursionAdapter excursionAdapter = new ExcursionAdapter(this);
         recyclerView.setAdapter(excursionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -232,7 +256,7 @@ public class VacationDetails extends AppCompatActivity {
                     Toast.makeText(VacationDetails.this, "You can't choose a day before the end of the vacation as the start!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), editHotel.getText().toString(), editVacaStart.getText().toString(), editVacaEnd.getText().toString());
+                    vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), editHotel.getText().toString(), editVacaStart.getText().toString(), editVacaEnd.getText().toString(), chosenFlight.getText().toString());
                     repository.insert(vacation);
                     this.finish();
                 }
@@ -252,7 +276,7 @@ public class VacationDetails extends AppCompatActivity {
                     Toast.makeText(VacationDetails.this, "You can't choose a day before the end of the vacation as the start!", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), editHotel.getText().toString(), editVacaStart.getText().toString(), editVacaEnd.getText().toString());
+                    vacation = new Vacations(vacationID, editName.getText().toString(), Double.parseDouble(editPrice.getText().toString()), editHotel.getText().toString(), editVacaStart.getText().toString(), editVacaEnd.getText().toString(), chosenFlight.getText().toString());
                     repository.update(vacation);
                     this.finish();
                 }

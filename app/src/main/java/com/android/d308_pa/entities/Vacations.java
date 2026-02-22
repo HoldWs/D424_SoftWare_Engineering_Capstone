@@ -17,16 +17,19 @@ public class Vacations {
 
     private String vacationEnd;
 
+    private String chosenFlight;
 
 
-    public Vacations(int vacationID, String vacationName, double price, String hotel, String vacationStart, String vacationEnd) {
+    public Vacations(int vacationID, String vacationName, double price, String hotel, String vacationStart, String vacationEnd, String chosenFlight) {
         this.vacationID = vacationID;
         this.vacationName = vacationName;
         this.price = price;
         this.hotel = hotel;
         this.vacationStart = vacationStart;
         this.vacationEnd = vacationEnd;
+        this.chosenFlight = chosenFlight;
     }
+
     public String getVacationName() {
         return vacationName;
     }
@@ -73,5 +76,13 @@ public class Vacations {
 
     public void setVacationStart(String vacationStart) {
         this.vacationStart = vacationStart;
+    }
+
+    public String getChosenFlight() {
+        return chosenFlight;
+    }
+
+    public void setChosenFlight(String chosenFlight) {
+        this.chosenFlight = chosenFlight;
     }
 }
