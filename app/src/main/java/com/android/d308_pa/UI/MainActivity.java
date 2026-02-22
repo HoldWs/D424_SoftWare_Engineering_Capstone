@@ -1,6 +1,7 @@
 package com.android.d308_pa.UI;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,9 +17,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.android.d308_pa.R;
 
+
 public class MainActivity extends AppCompatActivity {
 
     public static int numAlert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,5 +52,6 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
     }
 }

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="27dp">
+        tools:layout_editor_absoluteY="36dp">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
