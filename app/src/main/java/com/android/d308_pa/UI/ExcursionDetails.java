@@ -111,24 +111,7 @@ public class  ExcursionDetails extends AppCompatActivity {
         for (Vacations vacation : vacationArrayList) {
             vacationIdList.add(vacation.getVacationID());
         }
-        ArrayAdapter<Integer> vacationIdAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, vacationIdList);
-        Spinner spinner = findViewById(R.id.spinner);
-        spinner.setAdapter(vacationIdAdapter);
-        spinner.setSelection(vacationID - 1);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position >= 0 && position < vacationIdList.size()) {
-                    vacationID = vacationIdList.get(position);
-                } else {
-                    Log.e("DebugTag", "Invalid position: " + position);
-                }
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-            }
-        });
 
         dateStart = new DatePickerDialog.OnDateSetListener() {
             @Override
