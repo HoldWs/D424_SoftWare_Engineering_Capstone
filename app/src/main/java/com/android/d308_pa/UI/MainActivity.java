@@ -17,6 +17,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.android.d308_pa.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,9 +42,12 @@ public class MainActivity extends AppCompatActivity {
                 if ((username.isEmpty()) && (password.isEmpty())) {
                     Toast.makeText(MainActivity.this, "Please enter a username and password!", Toast.LENGTH_LONG).show();
                 }
-                else if ((username.equals("username")) && (password.equals("password"))) {
+                if ((username.equals("username")) && (password.equals("Password1!"))) {
                     Intent intent = new Intent(MainActivity.this, VacationList.class);
-                    startActivity(intent);                }
+                    startActivity(intent);}
+                else if (!validatePassword(password)) {
+                    Toast.makeText(MainActivity.this, "Your password needs to be at least 8 to 20 characters long and needs one at least one capital letter, one lowercase letter, a number and a special character!", Toast.LENGTH_SHORT).show();
+                }
                 else {
                     Toast.makeText(MainActivity.this, "Invalid username and password!", Toast.LENGTH_LONG).show();
                 }
@@ -52,6 +58,19 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+    public boolean validatePassword(String password) {
 
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,20}$";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        if (password == null) {
+            return false;
+        }
+
+        Matcher matcher = pattern.matcher(password);
+
+        return matcher.matches();
     }
 }
